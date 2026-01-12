@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Flight Tracker</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>Flight Tracker</h1>
+
+        <section class="panel">
+            <div class="row">
+                <div class="box">
+                    <div class="lab"><span>Departures</span><span>Enter to add</span></div>
+                    <div class="chips" id="depChips"></div>
+                    <input id="depIn" placeholder="JFK, BOS, NYC" />
+                </div>
+
+                <div class="box">
+                    <div class="lab"><span>Arrivals</span><span>Enter to add</span></div>
+                    <div class="chips" id="arrChips"></div>
+                    <input id="arrIn" placeholder="LHR, CDG, SFO" />
+                </div>
+
+                <div class="box mid">
+                    <div class="lab"><span>Date range</span><span>Start / End</span></div>
+                    <div class="date">
+                        <input id="d1" type="date" />
+                        <input id="d2" type="date" />
+                    </div>
+                </div>
+
+                <div class="box small">
+                    <div class="lab"><span>People</span><span>1–9</span></div>
+                    <input id="pax" type="number" min="1" max="9" value="1" />
+                </div>
+
+                <div class="btnwrap">
+                    <button class="btn" id="go">Search ✈️</button>
+                </div>
+            </div>
+
+            <div class="status">
+                <div id="st">Add departures/arrivals, pick dates, then search.</div>
+                <div>Endpoint: <code id="ep">(not set)</code></div>
+            </div>
+        </section>
+
+        <section class="panel results">
+            <div class="rhead">
+                <h2>Results</h2>
+            </div>
+            <div class="list" id="list">
+                <div class="empty">Top 3 will show here. Click “Show more” for the rest.</div>
+            </div>
+            <div class="more" id="more"><button id="moreBtn">Show more</button></div>
+        </section>
+    </div>
+
+    <script>
+        const API_URL = ""; // set to your backend: https://.../search
+        const $ = id => document.getElementById(id);
+        const S = { dep: [], arr: [], res: [], all: false };
+        $("ep").textContent = API_URL || "(not set)";
+
+        const norm = t => { t = (t || "").trim(); if (!t) return ""; let m = t.match(/\(([A-Za-z0-9]{3,4})\)\s*$/); t = m ? m[1] : t; return /^[A-Za-z0-9]{3,4}$/.test(t) ? t.toUpperCase() : t };
+        const add = (k, v) => { v = norm(v); if (!v || S[k].includes(v)) return; S[k].push(v); renderChips() };
+        const del = (k, v) => { S[k] = S[k].filter(x => x !== v); renderChips() };
+
+        function chip(k, v) {
+            let d = document.createElement("div"); d.className = "chip"; d.innerHTML = `<span>${v}</span>`;
+            let b = document.createElement("button"); b.textContent = "✕"; b.onclick = () => del(k, v); d.appendChild(b); return d
+        }
+        function renderChips() { for (const [k, el] of [["dep", $("depChips")], ["arr", $("arrChips")]]) { el.innerHTML = ""; S[k].forEach(v => el.appendChild(chip(k, v))) } }
+        function onKey(e, k, inEl) { if (e.key === "Enter" || e.key === ",") { e.preventDefault(); add(k, inEl.value.replaceAll(",", "")); inEl.value = "" } }
+        $("depIn").addEventListener("keydown", e => onKey(e, "dep", $("depIn")));
+        $("arrIn").addEventListener("keydown", e => onKey(e, "arr", $("arrIn")));
+
+        const hhmm = m => { m = +m || 0; return `${Math.floor(m / 60)}h ${m % 60}m` };
+        const price = p => { if (!p || typeof p.amount !== "number") return ""; try { return new Intl.NumberFormat(undefined, { style: "currency", currency: p.currency || "USD" }).format(p.amount) } catch { return `${p.amount} ${p.currency || "USD"}` } };
+        const route = segs => segs?.length ? `${segs[0].from} → ${segs[segs.length - 1].to}${segs.length > 1 ? ` (via ${segs.slice(0, -1).map(s => s.to).join(", ")})` : ""}` : "—";
+
+        function normalize(raw) {
+            const list = raw?.results || []; if (!Array.isArray(list)) return [];
+            return list.map((it, i) => {
+                const segs = it.segments || []; return {
+                    id: it.id || String(i),
+                    price: it.price || null,
+                    totalDurationMinutes: +(it.totalDurationMinutes || 0),
+                    stops: Number.isFinite(it.stops) ? it.stops : Math.max(0, (segs.length || 1) - 1),
+                    segments: segs.map(s => ({ from: s.from, to: s.to }))
+                }
+            }).sort((a, b) => (a.price?.amount ?? 1e18) - (b.price?.amount ?? 1e18));
+        }
+
+        function renderResults() {
+            const all = S.res, shown = S.all ? all : all.slice(0, 3);
+            const list = $("list"); list.innerHTML = "";
+            if (!all.length) { list.innerHTML = `<div class="empty">No results yet. Run a search to see flight paths.</div>`; $("more").style.display = "none"; return; }
+            shown.forEach(r => {
+                const c = document.createElement("div"); c.className = "card";
+                c.innerHTML = `<div style="min-width:0">
+      <div class="route">${route(r.segments)}</div>
+      <div class="meta"><span>${r.stops} stop${r.stops == 1 ? "" : "s"}</span><span>${hhmm(r.totalDurationMinutes)}</span></div>
+    </div><div class="price">${price(r.price)}</div>`;
+                list.appendChild(c);
+            });
+            $("more").style.display = all.length > 3 ? "flex" : "none";
+            $("moreBtn").textContent = S.all ? "Show less" : "Show more";
+        }
+        $("moreBtn").onclick = () => { S.all = !S.all; renderResults() };
+
+        function mock() {
+            return {
+                results: [
+                    { price: { amount: 412, currency: "USD" }, totalDurationMinutes: 410, segments: [{ from: S.dep[0], to: S.arr[0] }] },
+                    { price: { amount: 379, currency: "USD" }, totalDurationMinutes: 520, segments: [{ from: S.dep[0], to: "ORD" }, { from: "ORD", to: S.arr[0] }] },
+                    { price: { amount: 455, currency: "USD" }, totalDurationMinutes: 480, segments: [{ from: S.dep[0], to: "CLT" }, { from: "CLT", to: S.arr[0] }] },
+                    { price: { amount: 498, currency: "USD" }, totalDurationMinutes: 610, segments: [{ from: S.dep[0], to: "JFK" }, { from: "JFK", to: "DUB" }, { from: "DUB", to: S.arr[0] }] }
+                ]
+            }
+        }
+
+        function validate() {
+            if (!S.dep.length) return "Add at least one departure.";
+            if (!S.arr.length) return "Add at least one arrival.";
+            if (!$("d1").value || !$("d2").value) return "Choose start and end dates.";
+            if ($("d2").value < $("d1").value) return "End date must be on/after start date.";
+            const p = +($("pax").value || 1); if (!(p >= 1 && p <= 9)) return "Passengers must be 1–9.";
+            return null;
+        }
+
+        async function search() {
+            const e = validate(); if (e) { $("st").innerHTML = `<span class="err">${e}</span>`; return; }
+            $("go").disabled = true; $("st").textContent = "Searching flights…";
+            const payload = { departures: S.dep, arrivals: S.arr, dateStart: $("d1").value, dateEnd: $("d2").value, passengers: +$("pax").value };
+            try {
+                const raw = API_URL
+                    ? await fetch(API_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+                        .then(r => r.ok ? r.json() : Promise.reject(r.statusText))
+                    : mock();
+                S.res = normalize(raw); S.all = false; renderResults();
+                $("st").textContent = `Found ${S.res.length} option${S.res.length == 1 ? "" : "s"}.`;
+            } catch (err) {
+                $("st").innerHTML = `<span class="err">Search failed: ${err}</span>`;
+                S.res = []; renderResults();
+            }
+            $("go").disabled = false;
+        }
+
+        $("go").onclick = search;
+        renderChips();
+    </script>
+</body>
+
+</html>
