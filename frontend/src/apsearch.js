@@ -1,4 +1,4 @@
-import { config } from './config';
+import { config } from './config.ts';
 
 document.addEventListener("DOMContentLoaded", () => {
   const depIn = document.getElementById("depIn"), arrIn = document.getElementById("arrIn");
