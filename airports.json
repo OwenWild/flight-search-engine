@@ -1,6 +1,2402 @@
 [
-  { "iata": "JFK", "name": "John F Kennedy Intl", "city": "New York", "country": "US" },
-  { "iata": "LGA", "name": "LaGuardia", "city": "New York", "country": "US" },
-  { "iata": "EWR", "name": "Newark Liberty Intl", "city": "Newark", "country": "US" },
-  { "iata": "BOS", "name": "Logan Intl", "city": "Boston", "country": "US" }
+  {
+    "iata": "ATL",
+    "name": "HARTSFIELD-JACKSON INT",
+    "city": "ATLANTA",
+    "country": ""
+  },
+  {
+    "iata": "LAX",
+    "name": "LOS ANGELES INTL",
+    "city": "LOS ANGELES",
+    "country": ""
+  },
+  {
+    "iata": "IST",
+    "name": "ISTANBUL AIRPORT",
+    "city": "ISTANBUL",
+    "country": ""
+  },
+  {
+    "iata": "ANC",
+    "name": "TED STEVENS INTL",
+    "city": "ANCHORAGE",
+    "country": ""
+  },
+  {
+    "iata": "MAD",
+    "name": "ADOLFO SUAREZ BARAJAS",
+    "city": "MADRID",
+    "country": ""
+  },
+  {
+    "iata": "PHX",
+    "name": "SKY HARBOR INTL",
+    "city": "PHOENIX",
+    "country": ""
+  },
+  {
+    "iata": "SIA",
+    "name": "XIGUAN",
+    "city": "XI AN",
+    "country": ""
+  },
+  {
+    "iata": "XIY",
+    "name": "XIANYANG INTL",
+    "city": "XI AN",
+    "country": ""
+  },
+  {
+    "iata": "SZX",
+    "name": "BAO AN INTL",
+    "city": "SHENZHEN",
+    "country": ""
+  },
+  {
+    "iata": "MAN",
+    "name": "MANCHESTER AIRPORT",
+    "city": "MANCHESTER",
+    "country": ""
+  },
+  {
+    "iata": "BET",
+    "name": "BETHEL AIRPORT",
+    "city": "BETHEL",
+    "country": ""
+  },
+  {
+    "iata": "FAI",
+    "name": "FAIRBANKS INTL",
+    "city": "FAIRBANKS",
+    "country": ""
+  },
+  {
+    "iata": "AYT",
+    "name": "ANTALYA",
+    "city": "ANTALYA",
+    "country": ""
+  },
+  {
+    "iata": "AGP",
+    "name": "MALAGA AIRPORT",
+    "city": "MALAGA",
+    "country": ""
+  },
+  {
+    "iata": "ESB",
+    "name": "ESENBOGA",
+    "city": "ANKARA",
+    "country": ""
+  },
+  {
+    "iata": "ANK",
+    "name": "ETIMESGUT",
+    "city": "ANKARA",
+    "country": ""
+  },
+  {
+    "iata": "NCE",
+    "name": "COTE D AZUR",
+    "city": "NICE",
+    "country": ""
+  },
+  {
+    "iata": "EDI",
+    "name": "EDINBURGH AIRPORT",
+    "city": "EDINBURGH",
+    "country": ""
+  },
+  {
+    "iata": "AUS",
+    "name": "AUSTIN-BERGSTROM INTL",
+    "city": "AUSTIN",
+    "country": ""
+  },
+  {
+    "iata": "ALC",
+    "name": "ALICANTE AIRPORT",
+    "city": "ALICANTE",
+    "country": ""
+  },
+  {
+    "iata": "ADB",
+    "name": "ADNAN MENDERES",
+    "city": "IZMIR",
+    "country": ""
+  },
+  {
+    "iata": "STR",
+    "name": "STUTTGART AIRPORT",
+    "city": "STUTTGART",
+    "country": ""
+  },
+  {
+    "iata": "BGY",
+    "name": "BERGAMO ORIO AL SERIO",
+    "city": "MILAN",
+    "country": ""
+  },
+  {
+    "iata": "MSY",
+    "name": "LOUIS ARMSTRONG INTL",
+    "city": "NEW ORLEANS",
+    "country": ""
+  },
+  {
+    "iata": "JNU",
+    "name": "JUNEAU INTL",
+    "city": "JUNEAU",
+    "country": ""
+  },
+  {
+    "iata": "OME",
+    "name": "NOME",
+    "city": "NOME",
+    "country": ""
+  },
+  {
+    "iata": "SNA",
+    "name": "JOHN WAYNE",
+    "city": "SANTA ANA",
+    "country": ""
+  },
+  {
+    "iata": "OTZ",
+    "name": "RALPH WIEN MEMORIAL",
+    "city": "KOTZEBUE",
+    "country": ""
+  },
+  {
+    "iata": "TIJ",
+    "name": "A.L. RODRIGUEZ INTL",
+    "city": "TIJUANA",
+    "country": ""
+  },
+  {
+    "iata": "ADQ",
+    "name": "KODIAK AIRPORT",
+    "city": "KODIAK",
+    "country": ""
+  },
+  {
+    "iata": "KTN",
+    "name": "KETCHIKAN INTL",
+    "city": "KETCHIKAN",
+    "country": ""
+  },
+  {
+    "iata": "SAT",
+    "name": "SAN ANTONIO INTL",
+    "city": "SAN ANTONIO",
+    "country": ""
+  },
+  {
+    "iata": "NAP",
+    "name": "CAPODICHINO AIRPORT",
+    "city": "NAPLES",
+    "country": ""
+  },
+  {
+    "iata": "DUT",
+    "name": "DRIFTWOOD BAY AFS",
+    "city": "DUTCH HARBOR",
+    "country": ""
+  },
+  {
+    "iata": "ANI",
+    "name": "ANIAK",
+    "city": "ANIAK",
+    "country": ""
+  },
+  {
+    "iata": "AMD",
+    "name": "S.VALLABHBHAI PATEL",
+    "city": "AHMEDABAD",
+    "country": ""
+  },
+  {
+    "iata": "GAU",
+    "name": "GOPINATH BORDOLOI INTL",
+    "city": "GUWAHATI",
+    "country": ""
+  },
+  {
+    "iata": "LCY",
+    "name": "CITY AIRPORT",
+    "city": "LONDON",
+    "country": ""
+  },
+  {
+    "iata": "ACE",
+    "name": "LANZAROTE",
+    "city": "LANZAROTE",
+    "country": ""
+  },
+  {
+    "iata": "NAY",
+    "name": "NANYUAN APT",
+    "city": "BEIJING",
+    "country": ""
+  },
+  {
+    "iata": "ABQ",
+    "name": "INTERNATIONAL SUNPORT",
+    "city": "ALBUQUERQUE",
+    "country": ""
+  },
+  {
+    "iata": "VLC",
+    "name": "VALENCIA AIRPORT",
+    "city": "VALENCIA",
+    "country": ""
+  },
+  {
+    "iata": "NQT",
+    "name": "NOTTINGHAM AIRPORT",
+    "city": "NOTTINGHAM",
+    "country": ""
+  },
+  {
+    "iata": "AKN",
+    "name": "KING SALMON",
+    "city": "KING SALMON",
+    "country": ""
+  },
+  {
+    "iata": "DLG",
+    "name": "DILLINGHAM",
+    "city": "DILLINGHAM",
+    "country": ""
+  },
+  {
+    "iata": "NTE",
+    "name": "ATLANTIQUE",
+    "city": "NANTES",
+    "country": ""
+  },
+  {
+    "iata": "BUR",
+    "name": "BOB HOPE APT",
+    "city": "BURBANK",
+    "country": ""
+  },
+  {
+    "iata": "BRW",
+    "name": "W.POST W.ROGERS MEM",
+    "city": "BARROW",
+    "country": ""
+  },
+  {
+    "iata": "ABZ",
+    "name": "DYCE",
+    "city": "ABERDEEN",
+    "country": ""
+  },
+  {
+    "iata": "ILI",
+    "name": "ILIAMNA",
+    "city": "ILIAMNA",
+    "country": ""
+  },
+  {
+    "iata": "OMA",
+    "name": "EPPLEY AIRFIELD",
+    "city": "OMAHA",
+    "country": ""
+  },
+  {
+    "iata": "ONT",
+    "name": "ONTARIO INTERNATIONAL",
+    "city": "LOS ANGELES",
+    "country": ""
+  },
+  {
+    "iata": "BIO",
+    "name": "BILBAO AIRPORT",
+    "city": "BILBAO",
+    "country": ""
+  },
+  {
+    "iata": "NUE",
+    "name": "NUREMBERG AIRPORT",
+    "city": "NUREMBERG",
+    "country": ""
+  },
+  {
+    "iata": "SVQ",
+    "name": "SEVILLA AIRPORT",
+    "city": "SEVILLA",
+    "country": ""
+  },
+  {
+    "iata": "LBA",
+    "name": "AIRPORT",
+    "city": "LEEDS BRADFORD",
+    "country": ""
+  },
+  {
+    "iata": "BXN",
+    "name": "IMSIK AIRPORT",
+    "city": "BODRUM",
+    "country": ""
+  },
+  {
+    "iata": "BOI",
+    "name": "AIR TERM GOWEN FLD",
+    "city": "BOISE",
+    "country": ""
+  },
+  {
+    "iata": "PVD",
+    "name": "T F GREEN STATE APT",
+    "city": "PROVIDENCE",
+    "country": ""
+  },
+  {
+    "iata": "CDB",
+    "name": "COLD BAY",
+    "city": "COLD BAY",
+    "country": ""
+  },
+  {
+    "iata": "HHN",
+    "name": "HAHN AIRPORT",
+    "city": "FRANKFURT",
+    "country": ""
+  },
+  {
+    "iata": "TUS",
+    "name": "TUCSON INTL",
+    "city": "TUCSON",
+    "country": ""
+  },
+  {
+    "iata": "KQA",
+    "name": "AKUTAN",
+    "city": "AKUTAN",
+    "country": ""
+  },
+  {
+    "iata": "CHS",
+    "name": "INTERNATIONAL AFB",
+    "city": "CHARLESTON",
+    "country": ""
+  },
+  {
+    "iata": "SIT",
+    "name": "ROCKY GUTIERREZ",
+    "city": "SITKA",
+    "country": ""
+  },
+  {
+    "iata": "UNK",
+    "name": "UNALAKLEET",
+    "city": "UNALAKLEET",
+    "country": ""
+  },
+  {
+    "iata": "ALB",
+    "name": "ALBANY INTL APT",
+    "city": "ALBANY",
+    "country": ""
+  },
+  {
+    "iata": "LYX",
+    "name": "LONDON ASHFORD",
+    "city": "LYDD",
+    "country": ""
+  },
+  {
+    "iata": "GAL",
+    "name": "EDWARD G PIKTA SR",
+    "city": "GALENA",
+    "country": ""
+  },
+  {
+    "iata": "MSC",
+    "name": "FALCON FIELD",
+    "city": "PHOENIX",
+    "country": ""
+  },
+  {
+    "iata": "AZA",
+    "name": "MESA GATEWAY",
+    "city": "PHOENIX",
+    "country": ""
+  },
+  {
+    "iata": "BHD",
+    "name": "GEORGE BEST CITY APT",
+    "city": "BELFAST",
+    "country": ""
+  },
+  {
+    "iata": "SCC",
+    "name": "DEADHORSE",
+    "city": "PRUDHOE BAY/DEADHORSE",
+    "country": ""
+  },
+  {
+    "iata": "BHM",
+    "name": "SHUTTLESWORTH INTL",
+    "city": "BIRMINGHAM",
+    "country": ""
+  },
+  {
+    "iata": "KNK",
+    "name": "KOKHANOK",
+    "city": "KOKHANOK",
+    "country": ""
+  },
+  {
+    "iata": "PTA",
+    "name": "PORT ALSWORTH",
+    "city": "PORT ALSWORTH",
+    "country": ""
+  },
+  {
+    "iata": "OOK",
+    "name": "TOKSOOK BAY",
+    "city": "TOKSOOK BAY",
+    "country": ""
+  },
+  {
+    "iata": "NNL",
+    "name": "NONDALTON",
+    "city": "NONDALTON",
+    "country": ""
+  },
+  {
+    "iata": "PDB",
+    "name": "PEDRO BAY",
+    "city": "PEDRO BAY",
+    "country": ""
+  },
+  {
+    "iata": "KLG",
+    "name": "KALSKAG",
+    "city": "KALSKAG",
+    "country": ""
+  },
+  {
+    "iata": "TSF",
+    "name": "TREVISO SANT ANGELO",
+    "city": "VENICE",
+    "country": ""
+  },
+  {
+    "iata": "TNK",
+    "name": "TUNUNAK",
+    "city": "TUNUNAK",
+    "country": ""
+  },
+  {
+    "iata": "EMK",
+    "name": "EMMONAK",
+    "city": "EMMONAK",
+    "country": ""
+  },
+  {
+    "iata": "VTZ",
+    "name": "VISHAKHAPATNAM",
+    "city": "VISHAKHAPATNAM",
+    "country": ""
+  },
+  {
+    "iata": "SXR",
+    "name": "SHEIKH UL ALAM",
+    "city": "SRINAGAR",
+    "country": ""
+  },
+  {
+    "iata": "KSM",
+    "name": "ST MARY'S",
+    "city": "ST MARY'S",
+    "country": ""
+  },
+  {
+    "iata": "ENA",
+    "name": "KENAI MUNICIPAL",
+    "city": "KENAI",
+    "country": ""
+  },
+  {
+    "iata": "WWT",
+    "name": "NEWTOK",
+    "city": "NEWTOK",
+    "country": ""
+  },
+  {
+    "iata": "FYU",
+    "name": "FORT YUKON",
+    "city": "FORT YUKON",
+    "country": ""
+  },
+  {
+    "iata": "NRN",
+    "name": "WEEZE AIRPORT",
+    "city": "DUESSELDORF",
+    "country": ""
+  },
+  {
+    "iata": "TKJ",
+    "name": "TOK JUNCTION",
+    "city": "TOK",
+    "country": ""
+  },
+  {
+    "iata": "ORT",
+    "name": "NORTHWAY",
+    "city": "NORTHWAY",
+    "country": ""
+  },
+  {
+    "iata": "ASR",
+    "name": "ERKILET",
+    "city": "KAYSERI",
+    "country": ""
+  },
+  {
+    "iata": "HOM",
+    "name": "HOMER",
+    "city": "HOMER",
+    "country": ""
+  },
+  {
+    "iata": "LIT",
+    "name": "B AND H CLINTON NATL",
+    "city": "LITTLE ROCK",
+    "country": ""
+  },
+  {
+    "iata": "AJA",
+    "name": "NAPOLEON BONAPARTE",
+    "city": "AJACCIO",
+    "country": ""
+  },
+  {
+    "iata": "NME",
+    "name": "NIGHTMUTE",
+    "city": "NIGHTMUTE",
+    "country": ""
+  },
+  {
+    "iata": "KOT",
+    "name": "KOTLIK",
+    "city": "KOTLIK",
+    "country": ""
+  },
+  {
+    "iata": "ATQ",
+    "name": "SRI GURU RAM DASS JEE",
+    "city": "AMRITSAR",
+    "country": ""
+  },
+  {
+    "iata": "NAG",
+    "name": "DR.AMBEDKAR INTL",
+    "city": "NAGPUR",
+    "country": ""
+  },
+  {
+    "iata": "TLT",
+    "name": "TULUKSAK",
+    "city": "TULUKSAK",
+    "country": ""
+  },
+  {
+    "iata": "SZF",
+    "name": "CARSAMBA AIRPORT",
+    "city": "SAMSUN",
+    "country": ""
+  },
+  {
+    "iata": "SHX",
+    "name": "SHAGELUK",
+    "city": "SHAGELUK",
+    "country": ""
+  },
+  {
+    "iata": "VAK",
+    "name": "CHEVAK",
+    "city": "CHEVAK",
+    "country": ""
+  },
+  {
+    "iata": "CAK",
+    "name": "REGIONAL",
+    "city": "AKRON CANTON",
+    "country": ""
+  },
+  {
+    "iata": "WRG",
+    "name": "WRANGELL",
+    "city": "WRANGELL",
+    "country": ""
+  },
+  {
+    "iata": "PQS",
+    "name": "PILOT STATION",
+    "city": "PILOT STATION",
+    "country": ""
+  },
+  {
+    "iata": "HKB",
+    "name": "HEALY LAKE",
+    "city": "HEALY LAKE",
+    "country": ""
+  },
+  {
+    "iata": "GAM",
+    "name": "GAMBELL",
+    "city": "GAMBELL",
+    "country": ""
+  },
+  {
+    "iata": "SVA",
+    "name": "SAVOONGA",
+    "city": "SAVOONGA",
+    "country": ""
+  },
+  {
+    "iata": "IDR",
+    "name": "DEVI AHILYA BAI HOLKAR",
+    "city": "INDORE",
+    "country": ""
+  },
+  {
+    "iata": "TGZ",
+    "name": "ANGEL ALBINO CORZO INT",
+    "city": "TUXTLA GUTIERREZ",
+    "country": ""
+  },
+  {
+    "iata": "FYV",
+    "name": "DRAKE FIELD",
+    "city": "FAYETTEVILLE SPRINGD",
+    "country": ""
+  },
+  {
+    "iata": "XNA",
+    "name": "NW ARKANSAS RGN",
+    "city": "FAYETTEVILLE SPRINGD",
+    "country": ""
+  },
+  {
+    "iata": "SMK",
+    "name": "ST MICHAEL",
+    "city": "ST MICHAEL",
+    "country": ""
+  },
+  {
+    "iata": "EDA",
+    "name": "SEA PLANE BASE",
+    "city": "EDNA BAY",
+    "country": ""
+  },
+  {
+    "iata": "PSG",
+    "name": "JAMES A JOHNSON",
+    "city": "PETERSBURG",
+    "country": ""
+  },
+  {
+    "iata": "CJS",
+    "name": "ABRAHAM GONZALEZ INTL",
+    "city": "CIUDAD JUAREZ",
+    "country": ""
+  },
+  {
+    "iata": "PKA",
+    "name": "NAPASKIAK",
+    "city": "NAPASKIAK",
+    "country": ""
+  },
+  {
+    "iata": "KWK",
+    "name": "KWIGILLINGOK",
+    "city": "KWIGILLINGOK",
+    "country": ""
+  },
+  {
+    "iata": "AXF",
+    "name": "ALXA LEFT BANNER",
+    "city": "ALXA LEFT BANNER",
+    "country": ""
+  },
+  {
+    "iata": "WBB",
+    "name": "STEBBINS",
+    "city": "STEBBINS",
+    "country": ""
+  },
+  {
+    "iata": "MCG",
+    "name": "MCGRATH",
+    "city": "MCGRATH",
+    "country": ""
+  },
+  {
+    "iata": "KKH",
+    "name": "KONGIGANAK",
+    "city": "KONGIGANAK",
+    "country": ""
+  },
+  {
+    "iata": "CYF",
+    "name": "CHEFORNAK",
+    "city": "CHEFORNAK",
+    "country": ""
+  },
+  {
+    "iata": "WAA",
+    "name": "WALES",
+    "city": "WALES",
+    "country": ""
+  },
+  {
+    "iata": "AKI",
+    "name": "AKIAK",
+    "city": "AKIAK",
+    "country": ""
+  },
+  {
+    "iata": "AHO",
+    "name": "FERTILIA",
+    "city": "ALGHERO",
+    "country": ""
+  },
+  {
+    "iata": "TAL",
+    "name": "RALPH M CALHUM MEM",
+    "city": "TANANA",
+    "country": ""
+  },
+  {
+    "iata": "CDV",
+    "name": "MERLE K MUDHOLE SMITH",
+    "city": "CORDOVA",
+    "country": ""
+  },
+  {
+    "iata": "WTL",
+    "name": "TUNTUTULIAK",
+    "city": "TUNTUTULIAK",
+    "country": ""
+  },
+  {
+    "iata": "SXP",
+    "name": "SHELDON POINT",
+    "city": "NUNAM IQUA",
+    "country": ""
+  },
+  {
+    "iata": "FKB",
+    "name": "BADEN AIRPARK",
+    "city": "KARLSRUHE/BADEN BADEN",
+    "country": ""
+  },
+  {
+    "iata": "NUP",
+    "name": "NUNAPITCHUK",
+    "city": "NUNAPITCHUK",
+    "country": ""
+  },
+  {
+    "iata": "OVD",
+    "name": "ASTURIAS",
+    "city": "ASTURIAS",
+    "country": ""
+  },
+  {
+    "iata": "FMM",
+    "name": "ALLGAEU",
+    "city": "MEMMINGEN",
+    "country": ""
+  },
+  {
+    "iata": "IXZ",
+    "name": "VEER SAVARKAR INTL",
+    "city": "PORT BLAIR",
+    "country": ""
+  },
+  {
+    "iata": "INV",
+    "name": "AIRPORT",
+    "city": "INVERNESS",
+    "country": ""
+  },
+  {
+    "iata": "ALZ",
+    "name": "ALITAK SPB",
+    "city": "ALITAK",
+    "country": ""
+  },
+  {
+    "iata": "RSH",
+    "name": "RUSSIAN MISSION",
+    "city": "RUSSIAN MISSION",
+    "country": ""
+  },
+  {
+    "iata": "KUK",
+    "name": "KASIGLUK",
+    "city": "KASIGLUK",
+    "country": ""
+  },
+  {
+    "iata": "ELI",
+    "name": "ELIM",
+    "city": "ELIM",
+    "country": ""
+  },
+  {
+    "iata": "ACK",
+    "name": "MEMORIAL",
+    "city": "NANTUCKET",
+    "country": ""
+  },
+  {
+    "iata": "HPB",
+    "name": "HOOPER BAY",
+    "city": "HOOPER BAY",
+    "country": ""
+  },
+  {
+    "iata": "WNA",
+    "name": "NAPAKIAK",
+    "city": "NAPAKIAK",
+    "country": ""
+  },
+  {
+    "iata": "PTU",
+    "name": "PLATINUM",
+    "city": "PLATINUM",
+    "country": ""
+  },
+  {
+    "iata": "AKU",
+    "name": "AKSU",
+    "city": "AKSU",
+    "country": ""
+  },
+  {
+    "iata": "YAK",
+    "name": "YAKUTAT",
+    "city": "YAKUTAT",
+    "country": ""
+  },
+  {
+    "iata": "VEE",
+    "name": "VENETIE",
+    "city": "VENETIE",
+    "country": ""
+  },
+  {
+    "iata": "SKK",
+    "name": "SHAKTOOLIK",
+    "city": "SHAKTOOLIK",
+    "country": ""
+  },
+  {
+    "iata": "OBU",
+    "name": "KOBUK",
+    "city": "KOBUK",
+    "country": ""
+  },
+  {
+    "iata": "PTH",
+    "name": "PORT HEIDEN",
+    "city": "PORT HEIDEN",
+    "country": ""
+  },
+  {
+    "iata": "KPN",
+    "name": "KIPNUK",
+    "city": "KIPNUK",
+    "country": ""
+  },
+  {
+    "iata": "EEK",
+    "name": "EEK",
+    "city": "EEK",
+    "country": ""
+  },
+  {
+    "iata": "GLV",
+    "name": "GOLOVIN",
+    "city": "GOLOVIN",
+    "country": ""
+  },
+  {
+    "iata": "KKI",
+    "name": "AKIACHAK",
+    "city": "AKIACHAK",
+    "country": ""
+  },
+  {
+    "iata": "KWN",
+    "name": "QUINHAGAK",
+    "city": "QUINHAGAK",
+    "country": ""
+  },
+  {
+    "iata": "HSV",
+    "name": "INTL-CARL T.JONES FLD",
+    "city": "HUNTSVILLE",
+    "country": ""
+  },
+  {
+    "iata": "ACY",
+    "name": "ATLANTIC CITY INTL",
+    "city": "ATLANTIC CITY",
+    "country": ""
+  },
+  {
+    "iata": "TLJ",
+    "name": "TATALINA",
+    "city": "TATALINA",
+    "country": ""
+  },
+  {
+    "iata": "KGX",
+    "name": "GRAYLING",
+    "city": "GRAYLING",
+    "country": ""
+  },
+  {
+    "iata": "IXA",
+    "name": "AGARTALA",
+    "city": "AGARTALA",
+    "country": ""
+  },
+  {
+    "iata": "LEI",
+    "name": "ALMERIA",
+    "city": "ALMERIA",
+    "country": ""
+  },
+  {
+    "iata": "TLC",
+    "name": "TOLUCA-A.LOPEZ MATEOS",
+    "city": "MEXICO CITY",
+    "country": ""
+  },
+  {
+    "iata": "KWT",
+    "name": "KWETHLUK",
+    "city": "KWETHLUK",
+    "country": ""
+  },
+  {
+    "iata": "AOI",
+    "name": "FALCONARA",
+    "city": "ANCONA",
+    "country": ""
+  },
+  {
+    "iata": "KLN",
+    "name": "LARSEN BAY",
+    "city": "LARSEN BAY",
+    "country": ""
+  },
+  {
+    "iata": "SLQ",
+    "name": "SLEETMUTE",
+    "city": "SLEETMUTE",
+    "country": ""
+  },
+  {
+    "iata": "WMK",
+    "name": "SPB",
+    "city": "MEYERS CHUCK",
+    "country": ""
+  },
+  {
+    "iata": "OLH",
+    "name": "OLD HARBOR",
+    "city": "OLD HARBOR",
+    "country": ""
+  },
+  {
+    "iata": "ACA",
+    "name": "JUAN N. ALVAREZ INTL",
+    "city": "ACAPULCO",
+    "country": ""
+  },
+  {
+    "iata": "MLL",
+    "name": "DON HUNTER SR.",
+    "city": "MARSHALL",
+    "country": ""
+  },
+  {
+    "iata": "VGO",
+    "name": "VIGO AIRPORT",
+    "city": "VIGO",
+    "country": ""
+  },
+  {
+    "iata": "CAE",
+    "name": "METROPOLITAN APT",
+    "city": "COLUMBIA",
+    "country": ""
+  },
+  {
+    "iata": "LCG",
+    "name": "A CORUNA AIRPORT",
+    "city": "A CORUNA",
+    "country": ""
+  },
+  {
+    "iata": "PHO",
+    "name": "POINT HOPE",
+    "city": "POINT HOPE",
+    "country": ""
+  },
+  {
+    "iata": "DJN",
+    "name": "DELTA JUNCTION AIRPORT",
+    "city": "DELTA JUNCTION",
+    "country": ""
+  },
+  {
+    "iata": "WMO",
+    "name": "WHITE MOUNTAIN",
+    "city": "WHITE MOUNTAIN",
+    "country": ""
+  },
+  {
+    "iata": "BTT",
+    "name": "BETTLES",
+    "city": "BETTLES",
+    "country": ""
+  },
+  {
+    "iata": "HCR",
+    "name": "HOLY CROSS",
+    "city": "HOLY CROSS",
+    "country": ""
+  },
+  {
+    "iata": "AVL",
+    "name": "ASHEVILLE REGIONAL",
+    "city": "ASHEVILLE/HENDERSONV.",
+    "country": ""
+  },
+  {
+    "iata": "ATY",
+    "name": "REGIONAL",
+    "city": "WATERTOWN",
+    "country": ""
+  },
+  {
+    "iata": "TWA",
+    "name": "TWIN HILLS",
+    "city": "TWIN HILLS",
+    "country": ""
+  },
+  {
+    "iata": "SHH",
+    "name": "SHISHMAREF",
+    "city": "SHISHMAREF",
+    "country": ""
+  },
+  {
+    "iata": "IRC",
+    "name": "CIRCLE CITY",
+    "city": "CIRCLE",
+    "country": ""
+  },
+  {
+    "iata": "CHA",
+    "name": "METROPOLITAN APT",
+    "city": "CHATTANOOGA",
+    "country": ""
+  },
+  {
+    "iata": "AGU",
+    "name": "JESUS TERAN PEREDO INT",
+    "city": "AGUASCALIENTES",
+    "country": ""
+  },
+  {
+    "iata": "SDR",
+    "name": "SANTANDER AIRPORT",
+    "city": "SANTANDER",
+    "country": ""
+  },
+  {
+    "iata": "DRG",
+    "name": "DEERING",
+    "city": "DEERING",
+    "country": ""
+  },
+  {
+    "iata": "AKP",
+    "name": "ANAKTUVUK PASS",
+    "city": "ANAKTUVUK PASS",
+    "country": ""
+  },
+  {
+    "iata": "VGA",
+    "name": "VIJAYAWADA",
+    "city": "VIJAYAWADA",
+    "country": ""
+  },
+  {
+    "iata": "KLW",
+    "name": "KLAWOCK",
+    "city": "KLAWOCK",
+    "country": ""
+  },
+  {
+    "iata": "KEB",
+    "name": "NANWALEK",
+    "city": "NANWALEK",
+    "country": ""
+  },
+  {
+    "iata": "KVC",
+    "name": "KING COVE",
+    "city": "KING COVE",
+    "country": ""
+  },
+  {
+    "iata": "HIA",
+    "name": "LIANSHUI",
+    "city": "HUAI'AN",
+    "country": ""
+  },
+  {
+    "iata": "GNU",
+    "name": "GOODNEWS BAY",
+    "city": "GOODNEWS BAY",
+    "country": ""
+  },
+  {
+    "iata": "XRY",
+    "name": "JEREZ AIRPORT",
+    "city": "JEREZ",
+    "country": ""
+  },
+  {
+    "iata": "AKB",
+    "name": "ATKA",
+    "city": "ATKA",
+    "country": ""
+  },
+  {
+    "iata": "KKA",
+    "name": "ALFRED ADAMS",
+    "city": "KOYUK",
+    "country": ""
+  },
+  {
+    "iata": "DED",
+    "name": "JOLLY GRANT AIRPORT",
+    "city": "DEHRA DUN",
+    "country": ""
+  },
+  {
+    "iata": "KWP",
+    "name": "WEST POINT VILLAGE SPB",
+    "city": "WEST POINT",
+    "country": ""
+  },
+  {
+    "iata": "KPR",
+    "name": "SEA PLANE BASE",
+    "city": "PORT WILLIAMS",
+    "country": ""
+  },
+  {
+    "iata": "CGA",
+    "name": "CRAIG SPB",
+    "city": "CRAIG",
+    "country": ""
+  },
+  {
+    "iata": "ABL",
+    "name": "AMBLER",
+    "city": "AMBLER",
+    "country": ""
+  },
+  {
+    "iata": "AMA",
+    "name": "RICK HUSBAND INTL",
+    "city": "AMARILLO",
+    "country": ""
+  },
+  {
+    "iata": "PML",
+    "name": "PORT MOLLER",
+    "city": "PORT MOLLER",
+    "country": ""
+  },
+  {
+    "iata": "GST",
+    "name": "GUSTAVUS AIRPORT",
+    "city": "GUSTAVUS",
+    "country": ""
+  },
+  {
+    "iata": "AUK",
+    "name": "ALAKANUK",
+    "city": "ALAKANUK",
+    "country": ""
+  },
+  {
+    "iata": "GNY",
+    "name": "GUNEY ANADOLU PROJESI",
+    "city": "SANLIURFA",
+    "country": ""
+  },
+  {
+    "iata": "SFQ",
+    "name": "SANLIURFA AIRPORT",
+    "city": "SANLIURFA",
+    "country": ""
+  },
+  {
+    "iata": "ATT",
+    "name": "ATMAUTLUAK",
+    "city": "ATMAUTLUAK",
+    "country": ""
+  },
+  {
+    "iata": "KCC",
+    "name": "SEA PLANE BASE",
+    "city": "COFFMAN COVE",
+    "country": ""
+  },
+  {
+    "iata": "KPV",
+    "name": "PERRYVILLE",
+    "city": "PERRYVILLE",
+    "country": ""
+  },
+  {
+    "iata": "SHG",
+    "name": "SHUNGNAK",
+    "city": "SHUNGNAK",
+    "country": ""
+  },
+  {
+    "iata": "KAL",
+    "name": "KALTAG",
+    "city": "KALTAG",
+    "country": ""
+  },
+  {
+    "iata": "IXS",
+    "name": "KUMBHIRGRAM",
+    "city": "SILCHAR",
+    "country": ""
+  },
+  {
+    "iata": "BKC",
+    "name": "BUCKLAND",
+    "city": "BUCKLAND",
+    "country": ""
+  },
+  {
+    "iata": "HSL",
+    "name": "HUSLIA",
+    "city": "HUSLIA",
+    "country": ""
+  },
+  {
+    "iata": "GZP",
+    "name": "GAZIPASA ALANYA",
+    "city": "GAZIPASA",
+    "country": ""
+  },
+  {
+    "iata": "ARC",
+    "name": "ARCTIC VILLAGE",
+    "city": "ARCTIC VILLAGE",
+    "country": ""
+  },
+  {
+    "iata": "KVL",
+    "name": "KIVALINA",
+    "city": "KIVALINA",
+    "country": ""
+  },
+  {
+    "iata": "IAN",
+    "name": "BOB BAKER MEMORIAL",
+    "city": "KIANA",
+    "country": ""
+  },
+  {
+    "iata": "HYL",
+    "name": "CLARK BAY SPB",
+    "city": "HOLLIS",
+    "country": ""
+  },
+  {
+    "iata": "WLK",
+    "name": "SELAWIK",
+    "city": "SELAWIK",
+    "country": ""
+  },
+  {
+    "iata": "WTK",
+    "name": "NOATAK",
+    "city": "NOATAK",
+    "country": ""
+  },
+  {
+    "iata": "ORV",
+    "name": "R.(BOB) CURTIS MEM.",
+    "city": "NOORVIK",
+    "country": ""
+  },
+  {
+    "iata": "ANV",
+    "name": "ANVIK",
+    "city": "ANVIK",
+    "country": ""
+  },
+  {
+    "iata": "ORI",
+    "name": "PORT LIONS",
+    "city": "PORT LIONS",
+    "country": ""
+  },
+  {
+    "iata": "ASE",
+    "name": "PITKIN COUNTY",
+    "city": "ASPEN",
+    "country": ""
+  },
+  {
+    "iata": "KTS",
+    "name": "BREVIG MISSION",
+    "city": "BREVIG MISSION",
+    "country": ""
+  },
+  {
+    "iata": "TIR",
+    "name": "TIRUPATI",
+    "city": "TIRUPATI",
+    "country": ""
+  },
+  {
+    "iata": "SLP",
+    "name": "PONCIANO ARRIAGA INTL",
+    "city": "SAN LUIS POTOSI",
+    "country": ""
+  },
+  {
+    "iata": "KCQ",
+    "name": "CHIGNIK LAKE",
+    "city": "CHIGNIK",
+    "country": ""
+  },
+  {
+    "iata": "CKD",
+    "name": "CROOKED CREEK",
+    "city": "CROOKED CREEK",
+    "country": ""
+  },
+  {
+    "iata": "KEH",
+    "name": "KENMORE AIR HARBOR SPB",
+    "city": "KENMORE",
+    "country": ""
+  },
+  {
+    "iata": "GRK",
+    "name": "REGIONAL R GRAY AAF",
+    "city": "KILLEEN FORT HOOD",
+    "country": ""
+  },
+  {
+    "iata": "KXA",
+    "name": "KASAAN SPB",
+    "city": "KASAAN",
+    "country": ""
+  },
+  {
+    "iata": "CKX",
+    "name": "CHICKEN",
+    "city": "CHICKEN",
+    "country": ""
+  },
+  {
+    "iata": "NKI",
+    "name": "SEA PLANE BASE",
+    "city": "NAUKITI BAY",
+    "country": ""
+  },
+  {
+    "iata": "GCW",
+    "name": "GRAND CANYON WEST",
+    "city": "GRAND CANYON WEST",
+    "country": ""
+  },
+  {
+    "iata": "CZN",
+    "name": "CHISANA",
+    "city": "CHISANA",
+    "country": ""
+  },
+  {
+    "iata": "ABE",
+    "name": "LEHIGH VALLEY INTL",
+    "city": "ALLENTOWN",
+    "country": ""
+  },
+  {
+    "iata": "TLA",
+    "name": "TELLER",
+    "city": "TELLER",
+    "country": ""
+  },
+  {
+    "iata": "FRD",
+    "name": "AIRPORT",
+    "city": "FRIDAY HARBOR",
+    "country": ""
+  },
+  {
+    "iata": "SCM",
+    "name": "SCAMMON BAY",
+    "city": "SCAMMON BAY",
+    "country": ""
+  },
+  {
+    "iata": "ACX",
+    "name": "XINGYI",
+    "city": "XINGYI",
+    "country": ""
+  },
+  {
+    "iata": "PSR",
+    "name": "ABRUZZO",
+    "city": "PESCARA",
+    "country": ""
+  },
+  {
+    "iata": "NUI",
+    "name": "NUIQSUT",
+    "city": "NUIQSUT",
+    "country": ""
+  },
+  {
+    "iata": "MOB",
+    "name": "REGIONAL",
+    "city": "MOBILE",
+    "country": ""
+  },
+  {
+    "iata": "ATW",
+    "name": "INTERNATIONAL",
+    "city": "APPLETON",
+    "country": ""
+  },
+  {
+    "iata": "TOG",
+    "name": "TOGIAK",
+    "city": "TOGIAK",
+    "country": ""
+  },
+  {
+    "iata": "KNW",
+    "name": "NEW STUYAHOK",
+    "city": "NEW STUYAHOK",
+    "country": ""
+  },
+  {
+    "iata": "IKO",
+    "name": "AIR STATION",
+    "city": "NIKOLSKI",
+    "country": ""
+  },
+  {
+    "iata": "GRB",
+    "name": "AUSTIN-STRAUBEL INTL",
+    "city": "GREEN BAY",
+    "country": ""
+  },
+  {
+    "iata": "JNG",
+    "name": "DA'AN",
+    "city": "JINING",
+    "country": ""
+  },
+  {
+    "iata": "AET",
+    "name": "ALLAKAKET",
+    "city": "ALLAKAKET",
+    "country": ""
+  },
+  {
+    "iata": "SRV",
+    "name": "STONY RIVER",
+    "city": "STONY RIVER",
+    "country": ""
+  },
+  {
+    "iata": "AGS",
+    "name": "REGIONAL (BUSH FIELD)",
+    "city": "AUGUSTA",
+    "country": ""
+  },
+  {
+    "iata": "BTI",
+    "name": "BARTER ISLAND",
+    "city": "BARTER ISLAND",
+    "country": ""
+  },
+  {
+    "iata": "YBP",
+    "name": "WULIANGYE AIRPORT",
+    "city": "YIBIN",
+    "country": ""
+  },
+  {
+    "iata": "RBY",
+    "name": "RUBY",
+    "city": "RUBY",
+    "country": ""
+  },
+  {
+    "iata": "WSN",
+    "name": "SOUTH NAKNEK",
+    "city": "SOUTH NAKNEK",
+    "country": ""
+  },
+  {
+    "iata": "CHO",
+    "name": "ALBEMARLE",
+    "city": "CHARLOTTESVILLE",
+    "country": ""
+  },
+  {
+    "iata": "MOU",
+    "name": "MOUNTAIN VILLAGE",
+    "city": "MOUNTAIN VILLAGE",
+    "country": ""
+  },
+  {
+    "iata": "PGM",
+    "name": "PORT GRAHAM",
+    "city": "PORT GRAHAM",
+    "country": ""
+  },
+  {
+    "iata": "CLP",
+    "name": "CLARKS POINT",
+    "city": "CLARKS POINT",
+    "country": ""
+  },
+  {
+    "iata": "WBQ",
+    "name": "BEAVER",
+    "city": "BEAVER",
+    "country": ""
+  },
+  {
+    "iata": "KCL",
+    "name": "CHIGNIK LAGOON",
+    "city": "CHIGNIK",
+    "country": ""
+  },
+  {
+    "iata": "SDP",
+    "name": "SAND POINT",
+    "city": "SAND POINT",
+    "country": ""
+  },
+  {
+    "iata": "TKE",
+    "name": "TENAKEE SPB",
+    "city": "TENAKEE SPRINGS",
+    "country": ""
+  },
+  {
+    "iata": "NUL",
+    "name": "NULATO",
+    "city": "NULATO",
+    "country": ""
+  },
+  {
+    "iata": "KMY",
+    "name": "SEA PLANE BASE",
+    "city": "MOSER BAY",
+    "country": ""
+  },
+  {
+    "iata": "KYU",
+    "name": "KOYUKUK",
+    "city": "KOYUKUK",
+    "country": ""
+  },
+  {
+    "iata": "SCN",
+    "name": "SAARBRUECKEN AIRPORT",
+    "city": "SAARBRUECKEN",
+    "country": ""
+  },
+  {
+    "iata": "CFE",
+    "name": "AUVERGNE",
+    "city": "CLERMONT FERRAND",
+    "country": ""
+  },
+  {
+    "iata": "UGI",
+    "name": "SAN JUAN UGANIK SPB",
+    "city": "UGANIK",
+    "country": ""
+  },
+  {
+    "iata": "SYB",
+    "name": "SEA PLANE BASE",
+    "city": "SEAL BAY",
+    "country": ""
+  },
+  {
+    "iata": "KZB",
+    "name": "SEA PLANE BASE",
+    "city": "ZACHAR BAY",
+    "country": ""
+  },
+  {
+    "iata": "HUS",
+    "name": "HUGHES",
+    "city": "HUGHES",
+    "country": ""
+  },
+  {
+    "iata": "UGB",
+    "name": "UGASHIK BAY",
+    "city": "PILOT POINT",
+    "country": ""
+  },
+  {
+    "iata": "AEX",
+    "name": "ALEXANDRIA INTL",
+    "city": "ALEXANDRIA",
+    "country": ""
+  },
+  {
+    "iata": "AAT",
+    "name": "ALTAY",
+    "city": "ALTAY",
+    "country": ""
+  },
+  {
+    "iata": "MNT",
+    "name": "AL WRIGHT",
+    "city": "MINTO",
+    "country": ""
+  },
+  {
+    "iata": "AVP",
+    "name": "INTERNATIONAL",
+    "city": "WILKES BARRE SCRANTON",
+    "country": ""
+  },
+  {
+    "iata": "KFP",
+    "name": "FALSE PASS",
+    "city": "FALSE PASS",
+    "country": ""
+  },
+  {
+    "iata": "NLG",
+    "name": "NELSON LAGOON",
+    "city": "NELSON LAGOON",
+    "country": ""
+  },
+  {
+    "iata": "AQG",
+    "name": "TIANZHUSHAN",
+    "city": "ANQING",
+    "country": ""
+  },
+  {
+    "iata": "BAR",
+    "name": "BO AO",
+    "city": "QIONGHAI",
+    "country": ""
+  },
+  {
+    "iata": "RHT",
+    "name": "ALXA RIGHT BANNER",
+    "city": "ALXA RIGHT BANNER",
+    "country": ""
+  },
+  {
+    "iata": "PGA",
+    "name": "MUNICIPAL",
+    "city": "PAGE",
+    "country": ""
+  },
+  {
+    "iata": "JGS",
+    "name": "JINGGANGSHAN",
+    "city": "JI'AN",
+    "country": ""
+  },
+  {
+    "iata": "AIA",
+    "name": "MUNICIPAL",
+    "city": "ALLIANCE",
+    "country": ""
+  },
+  {
+    "iata": "PBG",
+    "name": "PLATTSBURGH INTL APT",
+    "city": "PLATTSBURGH",
+    "country": ""
+  },
+  {
+    "iata": "KTB",
+    "name": "SEA PLANE BASE",
+    "city": "THORNE BAY",
+    "country": ""
+  },
+  {
+    "iata": "AVA",
+    "name": "HUANGGUOSHU",
+    "city": "ANSHUN",
+    "country": ""
+  },
+  {
+    "iata": "MGM",
+    "name": "REGIONAL-DANNELLY FLD",
+    "city": "MONTGOMERY",
+    "country": ""
+  },
+  {
+    "iata": "VCV",
+    "name": "S CALIF LOGISTICS APT",
+    "city": "VICTORVILLE",
+    "country": ""
+  },
+  {
+    "iata": "HNS",
+    "name": "HAINES",
+    "city": "HAINES",
+    "country": ""
+  },
+  {
+    "iata": "PIZ",
+    "name": "POINT LAY",
+    "city": "POINT LAY",
+    "country": ""
+  },
+  {
+    "iata": "VDZ",
+    "name": "PIONEER FIELD",
+    "city": "VALDEZ",
+    "country": ""
+  },
+  {
+    "iata": "SGY",
+    "name": "SKAGWAY",
+    "city": "SKAGWAY",
+    "country": ""
+  },
+  {
+    "iata": "PEG",
+    "name": "ST. FRANCIS OF ASSISI",
+    "city": "PERUGIA",
+    "country": ""
+  },
+  {
+    "iata": "AJL",
+    "name": "LENGPUI",
+    "city": "AIZAWL",
+    "country": ""
+  },
+  {
+    "iata": "HOT",
+    "name": "MEMORIAL FLD",
+    "city": "HOT SPRINGS",
+    "country": ""
+  },
+  {
+    "iata": "AZO",
+    "name": "INTERNATIONAL",
+    "city": "KALAMAZOO BATTLE CREEK",
+    "country": ""
+  },
+  {
+    "iata": "SNP",
+    "name": "SAINT PAUL ISLAND",
+    "city": "SAINT PAUL ISLAND",
+    "country": ""
+  },
+  {
+    "iata": "KOZ",
+    "name": "OUZINKIE",
+    "city": "OUZINKIE",
+    "country": ""
+  },
+  {
+    "iata": "DIB",
+    "name": "MOHANBARI",
+    "city": "DIBRUGARH",
+    "country": ""
+  },
+  {
+    "iata": "LBE",
+    "name": "ARNOLD PALMER REGIONAL",
+    "city": "LATROBE",
+    "country": ""
+  },
+  {
+    "iata": "AIN",
+    "name": "WAINWRIGHT",
+    "city": "WAINWRIGHT",
+    "country": ""
+  },
+  {
+    "iata": "AJI",
+    "name": "AGRI",
+    "city": "AGRI",
+    "country": ""
+  },
+  {
+    "iata": "CMF",
+    "name": "CHAMBERY AIX LES",
+    "city": "CHAMBERY AIX LES BAINS",
+    "country": ""
+  },
+  {
+    "iata": "CHU",
+    "name": "CHUATHBALUK",
+    "city": "CHUATHBALUK",
+    "country": ""
+  },
+  {
+    "iata": "EIL",
+    "name": "EIELSON AFB",
+    "city": "FAIRBANKS",
+    "country": ""
+  },
+  {
+    "iata": "IXU",
+    "name": "AURANGABAD",
+    "city": "AURANGABAD",
+    "country": ""
+  },
+  {
+    "iata": "OAJ",
+    "name": "A J ELLIS",
+    "city": "JACKSONVILLE",
+    "country": ""
+  },
+  {
+    "iata": "ELV",
+    "name": "SEA PLANE BASE",
+    "city": "ELFIN COVE",
+    "country": ""
+  },
+  {
+    "iata": "LBL",
+    "name": "MID AMERICA REGIONAL",
+    "city": "LIBERAL",
+    "country": ""
+  },
+  {
+    "iata": "ADF",
+    "name": "ADIYAMAN",
+    "city": "ADIYAMAN",
+    "country": ""
+  },
+  {
+    "iata": "ELD",
+    "name": "SOUTH ARKANSAS RGNL",
+    "city": "EL DORADO",
+    "country": ""
+  },
+  {
+    "iata": "KBC",
+    "name": "BIRCH CREEK",
+    "city": "BIRCH CREEK",
+    "country": ""
+  },
+  {
+    "iata": "ANE",
+    "name": "MARCE",
+    "city": "ANGERS",
+    "country": ""
+  },
+  {
+    "iata": "TPQ",
+    "name": "AMADO NERVO",
+    "city": "TEPIC",
+    "country": ""
+  },
+  {
+    "iata": "ACT",
+    "name": "REGIONAL",
+    "city": "WACO",
+    "country": ""
+  },
+  {
+    "iata": "STG",
+    "name": "ST GEORGE ISLAND",
+    "city": "ST GEORGE ISLAND",
+    "country": ""
+  },
+  {
+    "iata": "EAS",
+    "name": "SAN SEBASTIAN AIRPORT",
+    "city": "SAN SEBASTIAN",
+    "country": ""
+  },
+  {
+    "iata": "ABI",
+    "name": "REGIONAL",
+    "city": "ABILENE",
+    "country": ""
+  },
+  {
+    "iata": "WWP",
+    "name": "NORTH WHALE SPB",
+    "city": "WHALE PASS",
+    "country": ""
+  },
+  {
+    "iata": "IGD",
+    "name": "IGDIR AIRPORT",
+    "city": "IGDIR",
+    "country": ""
+  },
+  {
+    "iata": "LNJ",
+    "name": "LINCANG AIRPORT",
+    "city": "LINCANG",
+    "country": ""
+  },
+  {
+    "iata": "FSM",
+    "name": "REGIONAL",
+    "city": "FORT SMITH",
+    "country": ""
+  },
+  {
+    "iata": "VLL",
+    "name": "AIRPORT",
+    "city": "VALLADOLID",
+    "country": ""
+  },
+  {
+    "iata": "SPI",
+    "name": "A LINCOLN CAPITAL",
+    "city": "SPRINGFIELD",
+    "country": ""
+  },
+  {
+    "iata": "BHJ",
+    "name": "BHUJ AIRPORT",
+    "city": "BHUJ",
+    "country": ""
+  },
+  {
+    "iata": "CPE",
+    "name": "A.ACUNA ONGAY INTL",
+    "city": "CAMPECHE",
+    "country": ""
+  },
+  {
+    "iata": "ACV",
+    "name": "ARCATA APT",
+    "city": "ARCATA/EUREKA",
+    "country": ""
+  },
+  {
+    "iata": "YKM",
+    "name": "AIR TERMINAL",
+    "city": "YAKIMA",
+    "country": ""
+  },
+  {
+    "iata": "ENY",
+    "name": "NANNIWAN",
+    "city": "YAN AN",
+    "country": ""
+  },
+  {
+    "iata": "AUW",
+    "name": "DOWNTOWN APT",
+    "city": "WAUSAU",
+    "country": ""
+  },
+  {
+    "iata": "RJA",
+    "name": "RAJAHMUNDRY",
+    "city": "RAJAHMUNDRY",
+    "country": ""
+  },
+  {
+    "iata": "PPV",
+    "name": "SEA PLANE BASE",
+    "city": "PORT PROTECTION",
+    "country": ""
+  },
+  {
+    "iata": "COF",
+    "name": "PATRICK AFB",
+    "city": "COCOA BEACH",
+    "country": ""
+  },
+  {
+    "iata": "RMS",
+    "name": "AIR BASE",
+    "city": "RAMSTEIN",
+    "country": ""
+  },
+  {
+    "iata": "SUU",
+    "name": "TRAVIS AFB",
+    "city": "FAIRFIELD",
+    "country": ""
+  },
+  {
+    "iata": "YKH",
+    "name": "AIRPORT",
+    "city": "YINGKOU",
+    "country": ""
+  },
+  {
+    "iata": "DSI",
+    "name": "DESTIN EXECUTIVE APT",
+    "city": "DESTIN FT WALTON BEACH",
+    "country": ""
+  },
+  {
+    "iata": "ATK",
+    "name": "E.BURNELL SR MEMORIAL",
+    "city": "ATQASUK",
+    "country": ""
+  },
+  {
+    "iata": "YIE",
+    "name": "YIERSHI AIRPORT",
+    "city": "AERSHAN",
+    "country": ""
+  },
+  {
+    "iata": "AKK",
+    "name": "AKHIOK",
+    "city": "AKHIOK",
+    "country": ""
+  },
+  {
+    "iata": "TNC",
+    "name": "TIN CITY",
+    "city": "TIN CITY",
+    "country": ""
+  },
+  {
+    "iata": "APN",
+    "name": "ALPENA COUNTY REGIONAL",
+    "city": "ALPENA",
+    "country": ""
+  },
+  {
+    "iata": "MZH",
+    "name": "MERZIFON",
+    "city": "AMASYA",
+    "country": ""
+  },
+  {
+    "iata": "PRC",
+    "name": "ERNEST A LOVE FIELD",
+    "city": "PRESCOTT",
+    "country": ""
+  },
+  {
+    "iata": "KYK",
+    "name": "KARLUK",
+    "city": "KARLUK",
+    "country": ""
+  },
+  {
+    "iata": "MTM",
+    "name": "SPB",
+    "city": "METLAKATLA",
+    "country": ""
+  },
+  {
+    "iata": "SJT",
+    "name": "REGIONAL MATHIS FLD",
+    "city": "SAN ANGELO",
+    "country": ""
+  },
+  {
+    "iata": "PZI",
+    "name": "BAO ANGONG",
+    "city": "PANZHIHUA",
+    "country": ""
+  },
+  {
+    "iata": "ALW",
+    "name": "REGIONAL",
+    "city": "WALLA WALLA",
+    "country": ""
+  },
+  {
+    "iata": "HNH",
+    "name": "HOONAH",
+    "city": "HOONAH",
+    "country": ""
+  },
+  {
+    "iata": "KMO",
+    "name": "MANOKOTAK",
+    "city": "MANOKOTAK",
+    "country": ""
+  },
+  {
+    "iata": "KGK",
+    "name": "KOLIGANEK",
+    "city": "KOLIGANEK",
+    "country": ""
+  },
+  {
+    "iata": "CXF",
+    "name": "COLDFOOT",
+    "city": "COLDFOOT",
+    "country": ""
+  },
+  {
+    "iata": "BIF",
+    "name": "BIGGS AAF",
+    "city": "EL PASO",
+    "country": ""
+  },
+  {
+    "iata": "CIK",
+    "name": "CHALKYITSIK",
+    "city": "CHALKYITSIK",
+    "country": ""
+  },
+  {
+    "iata": "BPL",
+    "name": "ALASHANKOU",
+    "city": "BOLE",
+    "country": ""
+  },
+  {
+    "iata": "YUM",
+    "name": "YUMA INTL",
+    "city": "YUMA",
+    "country": ""
+  },
+  {
+    "iata": "FLG",
+    "name": "FLAGSTAFF PULLIAM",
+    "city": "GRAND CANYON",
+    "country": ""
+  },
+  {
+    "iata": "AOG",
+    "name": "TENG'AO",
+    "city": "ANSHAN",
+    "country": ""
+  },
+  {
+    "iata": "GCN",
+    "name": "NATIONAL PARK",
+    "city": "GRAND CANYON",
+    "country": ""
+  },
+  {
+    "iata": "ROW",
+    "name": "INTL AIR CENTER",
+    "city": "ROSWELL",
+    "country": ""
+  },
+  {
+    "iata": "ADK",
+    "name": "ADAK ISLAND",
+    "city": "ADAK ISLAND",
+    "country": ""
+  },
+  {
+    "iata": "TCT",
+    "name": "TAKOTNA",
+    "city": "TAKOTNA",
+    "country": ""
+  },
+  {
+    "iata": "SPS",
+    "name": "MUNICIPAL SHEPPARD AFB",
+    "city": "WICHITA FALLS",
+    "country": ""
+  },
+  {
+    "iata": "JRH",
+    "name": "ROWRIAH",
+    "city": "JORHAT",
+    "country": ""
+  },
+  {
+    "iata": "TXK",
+    "name": "REGIONAL WEBB FIELD",
+    "city": "TEXARKANA",
+    "country": ""
+  },
+  {
+    "iata": "ALS",
+    "name": "SAN LUIS VALLEY RGNL",
+    "city": "ALAMOSA",
+    "country": ""
+  },
+  {
+    "iata": "KZR",
+    "name": "ZAFER AIRPORT",
+    "city": "KUTAHYA",
+    "country": ""
+  },
+  {
+    "iata": "AEB",
+    "name": "YOUJIANG",
+    "city": "BAISE",
+    "country": ""
+  },
+  {
+    "iata": "SOV",
+    "name": "SELDOVIA",
+    "city": "SELDOVIA",
+    "country": ""
+  },
+  {
+    "iata": "KAE",
+    "name": "SPB",
+    "city": "KAKE",
+    "country": ""
+  },
+  {
+    "iata": "ADW",
+    "name": "JOINT BASE ANDREWS",
+    "city": "CAMP SPRINGS",
+    "country": ""
+  },
+  {
+    "iata": "LUR",
+    "name": "CAPE LISBURNE",
+    "city": "CAPE LISBURNE",
+    "country": ""
+  },
+  {
+    "iata": "SMX",
+    "name": "PUBLIC APT",
+    "city": "SANTA MARIA",
+    "country": ""
+  },
+  {
+    "iata": "DHN",
+    "name": "REGIONAL",
+    "city": "DOTHAN",
+    "country": ""
+  },
+  {
+    "iata": "TDX",
+    "name": "TRAT AIRPORT",
+    "city": "TRAT",
+    "country": ""
+  },
+  {
+    "iata": "CSG",
+    "name": "COLUMBUS APT",
+    "city": "COLUMBUS",
+    "country": ""
+  },
+  {
+    "iata": "PDK",
+    "name": "DEKALB-PEACHTREE",
+    "city": "ATLANTA",
+    "country": ""
+  },
+  {
+    "iata": "FBG",
+    "name": "SIMMONS AAF",
+    "city": "FORT BRAGG",
+    "country": ""
+  },
+  {
+    "iata": "ACI",
+    "name": "ALDERNEY",
+    "city": "ALDERNEY",
+    "country": ""
+  },
+  {
+    "iata": "KCG",
+    "name": "CHIGNIK AIRPORT",
+    "city": "CHIGNIK",
+    "country": ""
+  },
+  {
+    "iata": "EGX",
+    "name": "EGEGIK",
+    "city": "EGEGIK",
+    "country": ""
+  },
+  {
+    "iata": "UST",
+    "name": "NORTHEAST FLORIDA RGNL",
+    "city": "ST AUGUSTINE",
+    "country": ""
+  },
+  {
+    "iata": "KEK",
+    "name": "EKWOK",
+    "city": "EKWOK",
+    "country": ""
+  },
+  {
+    "iata": "BPT",
+    "name": "JACK BROOKS REGIONAL",
+    "city": "BEAUMONT PORT ARTHUR",
+    "country": ""
+  },
+  {
+    "iata": "AGN",
+    "name": "SEA PLANE BASE",
+    "city": "ANGOON",
+    "country": ""
+  },
+  {
+    "iata": "DMA",
+    "name": "DAVIS MONTHAN AFB",
+    "city": "TUCSON",
+    "country": ""
+  },
+  {
+    "iata": "RUP",
+    "name": "RUPSI",
+    "city": "RUPSI",
+    "country": ""
+  },
+  {
+    "iata": "CJM",
+    "name": "CHUMPHON AIRPORT",
+    "city": "CHUMPHON",
+    "country": ""
+  },
+  {
+    "iata": "ABY",
+    "name": "SOUTHWEST GEORGIA RGNL",
+    "city": "ALBANY",
+    "country": ""
+  },
+  {
+    "iata": "EDF",
+    "name": "ELMENDORF AFB",
+    "city": "ANCHORAGE",
+    "country": ""
+  }
 ]
