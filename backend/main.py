@@ -8,6 +8,23 @@ from data.FlightSearchQuery import FlightSearchQuery
 
 app = FastAPI(title="Flight Search Engine")
 
+base = "https://test.api.amadeus.com"  # or https://api.amadeus.com for prod
+client_id = os.environ["AMADEUS_CLIENT_ID"]
+client_secret = os.environ["AMADEUS_CLIENT_SECRET"]
+
+async def get_token(client: httpx.AsyncClient) -> str:
+    r = await client.post(
+        f"{base}/v1/security/oauth2/token",
+        data={
+            "grant_type": "client_credentials",
+            "client_id": client_id,
+            "client_secret": client_secret,
+        },
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        timeout=20,
+    )
+    return r.json()["access_token"]
+
 # CORS Configuration
 app.add_middleware(
     CORSMiddleware,
@@ -36,6 +53,12 @@ async def search_flights(query: FlightSearchQuery):
             # TODO: Call flight API here
             # response = await client.get("https://api.example.com/flights", params=query.model_dump())
             # data = response.json()
+            if token is None: 
+                token = await get_token(client) 
+                response = await client.get(f"{base}/v2/shopping/flight-offers", params=query.model_dump(), headers={"Authorization": f"Bearer {token}"}) 
+            if response.status_code == 401: 
+                token = await get_token(client) 
+                response = await client.get(f"{base}/v2/shopping/flight-offers", params=query.model_dump(), headers={"Authorization": f"Bearer {token}"})
             pass
 
         # Mock Data
