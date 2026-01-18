@@ -1,3 +1,5 @@
+import { config } from './config';
+
 document.addEventListener("DOMContentLoaded", () => {
   const depIn = document.getElementById("depIn"), arrIn = document.getElementById("arrIn");
   const depChips = document.getElementById("depChips"), arrChips = document.getElementById("arrChips");
@@ -173,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Sending query:", searchQuery);
 
       try {
-        const response = await fetch('YOUR_BACKEND_URL/search', {
+        const response = await fetch(`${config.apiUrl}/search`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(searchQuery)
