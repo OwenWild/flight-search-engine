@@ -7,6 +7,7 @@ import asyncio
 from datetime import datetime
 from typing import List, Dict, Any
 from data.FlightSearchQuery import FlightSearchQuery
+from data.FlightSearchResult import FlightSearchResult, FlightSegment
 ###MOCK QUERY
 # {
 #   "origins": ["BOS", "JFK"],
