@@ -98,12 +98,11 @@ async def search_flights(query: FlightSearchQuery):
                     headers={"Authorization": f"Bearer {token}"},
                     timeout=30,
                 )
-                
                 data = r.json()
                 flights.extend(data.get("data", []))
         ### return {"flights": flights}
-            results = to_results(flights)
-            return [x.model_dump() for x in results]
+        results = to_results(flights)
+        return { "flights": [x.model_dump() for x in results]}
                 
                     
                 
