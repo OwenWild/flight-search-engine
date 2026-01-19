@@ -103,7 +103,7 @@ async def search_flights(query: FlightSearchQuery):
                 flights.extend(data.get("data", []))
         ### return {"flights": flights}
             results = to_results(flights)
-            return {"flights": [x.model_dump() for x in results]}
+            return [x.model_dump() for x in results]
                 
                     
                 
