@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(r => r.json())
     .then(d => {
       const list = Array.isArray(d) ? d : (d.airports || d.data || []);
-      A = list.map(toA).filter((item): item is Airport => item !== null);
+      A = list.map(toA).filter((item: Airport | null): item is Airport => item !== null);
     })
     .catch(console.error);
 
