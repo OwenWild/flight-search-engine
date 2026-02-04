@@ -1,17 +1,17 @@
 import time
 from typing import List, Dict
 
+from data.FlightRoute import FlightRoute
+from data.FlightSearchResult import FlightSearchResultByCombination
+
 
 class FlightCache:
     def __init__(self, ttl_seconds: int = 86400):  # Default 24h
         self._cache = {}
         self.ttl = ttl_seconds
 
-    def _get_key(self, origin: str, dest: str, dt: str) -> str:
-        return f"{origin}:{dest}:{dt}"
-
-    def get(self, origin: str, dest: str, dt: str):
-        key = self._get_key(origin, dest, dt)
+    def get(self, route: FlightRoute) -> FlightSearchResultByCombination:
+        key = f"{route.origin}:{route.destination}:{route.date}"
         entry = self._cache.get(key)
         if not entry:
             return None
@@ -23,8 +23,8 @@ class FlightCache:
 
         return entry["data"]
 
-    def set(self, origin: str, dest: str, dt: str, data: List[Dict]):
-        key = self._get_key(origin, dest, dt)
+    def set(self, route: FlightRoute, data: List[Dict]):
+        key = f"{route.origin}:{route.destination}:{route.date}"
         self._cache[key] = {
             "expiry": time.time() + self.ttl,
             "data": data

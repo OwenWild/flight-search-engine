@@ -1,7 +1,7 @@
 import { config } from './config';
 import type {Airport} from "./frontend-data-interfaces/airport";
 import type {FlightSearchQuery} from "./frontend-data-interfaces/flight-search-query";
-import type {FlightSearchResult} from "./frontend-data-interfaces/flight-search-result";
+import type {FlightSearchResultByCombination} from "./frontend-data-interfaces/flight-search-result";
 import {renderFlightResults} from "./results-renderer";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -213,9 +213,9 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(searchQuery)
       });
 
-      const results: FlightSearchResult[] = await response.json();
+      const results: FlightSearchResultByCombination[] = await response.json();
       console.log("Results:", results);
-      statusEl.textContent = `Found ${results.length} flights!`;
+      statusEl.textContent = `Results found!`;
 
 
       if (results) {

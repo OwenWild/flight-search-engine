@@ -6,29 +6,25 @@ import uvicorn
 import httpx
 import os
 import asyncio
-from datetime import datetime
+from datetime import date, datetime
 from typing import List, Dict, Any
 
 from FlightCache import FlightCache
+from data.FlightRoute import FlightRoute
 from data.FlightSearchQuery import FlightSearchQuery
-from data.FlightSearchResult import FlightSearchResult, FlightSegment
+from data.FlightSearchResult import FlightSearchResult, FlightSegment, FlightSearchResultByCombination
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # --- Startup Logic ---
-    # Start the background cleanup task
     cleanup_task = asyncio.create_task(cache_cleaner())
-    print("Background cache cleaner started.")
+    yield
 
-    yield  # The app runs while this is yielded
-
-    # --- Shutdown Logic ---
     cleanup_task.cancel()
     try:
         await cleanup_task
     except asyncio.CancelledError:
-        print("Background cache cleaner stopped.")
+        print("Background cache cleaner error.") # TODO: Build proper logging
 
 app = FastAPI(title="Flight Search Engine", lifespan=lifespan)
 token = None 
@@ -89,11 +85,12 @@ async def search_flights(query: FlightSearchQuery):
 
             for origin, dest, dt in parse_query(query):
                 dt_str = dt.isoformat()
+                route = FlightRoute(origin, dest, convert_string_to_date(dt_str))
 
                 # Check cache
-                cached_data = flight_cache.get(origin, dest, dt_str)
+                cached_data = flight_cache.get(route)
                 if cached_data:
-                    results.extend(cached_data)
+                    results.append(cached_data)
                     continue
 
                 # If not in cache, call API
@@ -114,13 +111,13 @@ async def search_flights(query: FlightSearchQuery):
                 )
 
                 data = r.json()
-                flights = parse_amadeus_results(data.get("data", []))
-                flight_dicts = [f.model_dump() for f in flights]
-                flight_cache.set(origin, dest, dt_str, flight_dicts)
+                flights = parse_amadeus_results(data.get("data", []), route)
+                flight_dicts = flights.model_dump()
+                flight_cache.set(route, flight_dicts)
 
-                results.extend(flight_dicts)
+                results.append(flight_dicts)
 
-        results.sort(key=lambda r: r["price"])
+        results.sort(key=lambda r: r["flights"][0]["price"])
 
         return results[:6]
 
@@ -138,12 +135,14 @@ def parse_query(q: FlightSearchQuery):
                 yield (o.upper().strip(), d.upper().strip(), dt)
    
    
-def _dt(s: str) -> datetime: # datetime helper 
-    # handles "...Z" if it appears
+def convert_string_to_datetime(s: str) -> datetime:
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+def convert_string_to_date(s: str) -> date:
+    return datetime.fromisoformat(s.replace("Z", "+00:00")).date()
              
-def parse_amadeus_results(amadeus_offers: List[Dict[str, Any]]) -> List[FlightSearchResult]:
-    out: List[FlightSearchResult] = []
+def parse_amadeus_results(amadeus_offers: List[Dict[str, Any]], route: FlightRoute) -> FlightSearchResultByCombination:
+    flights: List[FlightSearchResult] = []
 
     for offer in amadeus_offers:
         itin = offer["itineraries"][0]
@@ -153,26 +152,31 @@ def parse_amadeus_results(amadeus_offers: List[Dict[str, Any]]) -> List[FlightSe
             FlightSegment(
                 origin=s["departure"]["iataCode"],
                 destination=s["arrival"]["iataCode"],
-                start_time=_dt(s["departure"]["at"]),
-                end_time=_dt(s["arrival"]["at"]),
+                start_time=convert_string_to_datetime(s["departure"]["at"]),
+                end_time=convert_string_to_datetime(s["arrival"]["at"]),
             )
             for s in segs
         ]
 
         airline = (offer.get("validatingAirlineCodes") or [segs[0].get("carrierCode", "")])[0]
-        start_date = _dt(segs[0]["departure"]["at"]).date()
         price = float(offer["price"]["total"])
 
-        out.append(
+        flights.append(
             FlightSearchResult(
                 airline=airline,
-                date=start_date,
                 price=price,
                 segments=segments,
             )
         )
 
-    return out
+    flights.sort(key=lambda r: r.price)
+
+    return FlightSearchResultByCombination(
+        date=route.date,
+        origin=route.origin,
+        destination=route.destination,
+        flights=flights
+    )
 
 
 

@@ -1,4 +1,6 @@
-import type { FlightSearchResult } from "./frontend-data-interfaces/flight-search-result.ts";
+import type {
+    FlightSearchResultByCombination
+} from "./frontend-data-interfaces/flight-search-result.ts";
 import "../public/results.css";
 
 function getDuration(start: string, end: string): string {
@@ -12,7 +14,7 @@ function formatTime(isoStr: string): string {
   return new Date(isoStr).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 }
 
-export function renderFlightResults(listContainer: HTMLElement, moreWrapper: HTMLElement, results: FlightSearchResult[]) {
+export function renderFlightResults(listContainer: HTMLElement, moreWrapper: HTMLElement, results: FlightSearchResultByCombination[]) {
   listContainer.innerHTML = "";
   if (results.length === 0) {
     listContainer.innerHTML = `<div class="empty">No flights found.</div>`;
@@ -23,7 +25,8 @@ export function renderFlightResults(listContainer: HTMLElement, moreWrapper: HTM
   const resultsList = document.createElement("div");
   resultsList.className = "flight-results-list";
 
-  resultsList.innerHTML = results.map(flight => {
+  resultsList.innerHTML = results.map(flightRoutesByCombination => {
+    const flight = flightRoutesByCombination.flights[0]
     const first = flight.segments[0];
     const last = flight.segments[flight.segments.length - 1];
     const stopCount = flight.segments.length - 1;
@@ -38,7 +41,7 @@ export function renderFlightResults(listContainer: HTMLElement, moreWrapper: HTM
         
         
         <div class="flight-col date-info">
-          <span class="flight-date">${new Date(flight.date).toLocaleDateString([], { month: 'short', day: 'numeric' })}</span>
+          <span class="flight-date">${new Date(flightRoutesByCombination.date).toLocaleDateString([], { month: 'short', day: 'numeric' })}</span>
         </div>
 
         <!-- NEW COMBINED COLUMN -->
