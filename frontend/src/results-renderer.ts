@@ -13,6 +13,54 @@ function getDuration(start: string, end: string): string {
 function formatTime(isoStr: string): string {
   return new Date(isoStr).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 }
+function renderFlightRowHtml(flight: any, date: string, isSubResult = false, expandBtnHtml = ""): string {
+  const first = flight.segments[0];
+  const last = flight.segments[flight.segments.length - 1];
+  const stopCount = flight.segments.length - 1;
+  const stopsText = stopCount === 0 ? "Direct" : `${stopCount} stop${stopCount > 1 ? 's' : ''}`;
+  const stopAirports = flight.segments.slice(0, -1).map((s: any) => s.destination).join(", ");
+
+  return `
+    <div class="flight-card ${isSubResult ? 'sub-result' : ''}">
+      <div class="flight-col airline-info">
+        <span class="airline-name">${flight.airline}</span>
+      </div>
+      
+      <div class="flight-col date-info">
+        <span class="flight-date">${new Date(date).toLocaleDateString([], { month: 'short', day: 'numeric' })}</span>
+      </div>
+
+      <div class="flight-col route-path-container">
+        <div class="endpoint">
+           <span class="code">${first.origin}</span>
+          <span class="time">${formatTime(first.start_time)}</span>
+        </div>
+
+        <div class="path-visual">
+          <span class="duration-label">${getDuration(first.start_time, last.end_time)}</span>
+          <div class="path-line"></div>
+          <span class="stops-label ${stopCount > 0 ? 'has-stops' : ''}">
+            ${stopsText} ${stopAirports ? `(${stopAirports})` : ''}
+          </span>
+        </div>
+
+        <div class="endpoint">
+          <span class="code">${last.destination}</span>
+          <span class="time">${formatTime(last.end_time)}</span>
+        </div>
+      </div>
+
+      <div class="flight-col price-info">
+        <span class="price-val">$${flight.price.toFixed(0)}</span>
+        <button class="select-btn">Select</button>
+      </div>
+
+      <div class="flight-col expand-info">
+        ${expandBtnHtml}
+      </div>
+    </div>
+  `;
+}
 
 export function renderFlightResults(listContainer: HTMLElement, moreWrapper: HTMLElement, results: FlightSearchResultByCombination[]) {
   listContainer.innerHTML = "";
@@ -25,54 +73,25 @@ export function renderFlightResults(listContainer: HTMLElement, moreWrapper: HTM
   const resultsList = document.createElement("div");
   resultsList.className = "flight-results-list";
 
-  resultsList.innerHTML = results.map(flightRoutesByCombination => {
-    const flight = flightRoutesByCombination.flights[0]
-    const first = flight.segments[0];
-    const last = flight.segments[flight.segments.length - 1];
-    const stopCount = flight.segments.length - 1;
-    const stopsText = stopCount === 0 ? "Direct" : `${stopCount} stop${stopCount > 1 ? 's' : ''}`;
-    const stopAirports = flight.segments.slice(0, -1).map(s => s.destination).join(", ");
+  resultsList.innerHTML = results.map((combo, index) => {
+    const mainFlight = combo.flights[0];
+    const otherFlights = combo.flights.slice(1, 5);
+    const hasOptions = otherFlights.length > 0;
+
+    const expandBtnHtml = hasOptions ? `
+      <button class="expand-btn" onclick="this.closest('.flight-group').classList.toggle('is-expanded')">
+        <span class="tooltip-box">Show more options</span>
+        <svg class="chevron" viewBox="0 0 24 24" width="28" height="28">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="black"/>
+        </svg>
+      </button>
+    ` : "";
 
     return `
-      <div class="flight-card">
-        <div class="flight-col airline-info">
-          <span class="airline-name">${flight.airline}</span>
-        </div>
-        
-        
-        <div class="flight-col date-info">
-          <span class="flight-date">${new Date(flightRoutesByCombination.date).toLocaleDateString([], { month: 'short', day: 'numeric' })}</span>
-        </div>
-
-        <!-- NEW COMBINED COLUMN -->
-        <div class="flight-col route-path-container">
-          
-          <!-- Start Time/Code -->
-          <div class="endpoint">
-             <span class="code">${first.origin}</span>
-            <span class="time">${formatTime(first.start_time)}</span>
-          </div>
-
-          <!-- The Long Path (Duration on top, Line in middle, Stops on bottom) -->
-          <div class="path-visual">
-            <span class="duration-label">${getDuration(first.start_time, last.end_time)}</span>
-            <div class="path-line"></div>
-            <span class="stops-label ${stopCount > 0 ? 'has-stops' : ''}">
-              ${stopsText} ${stopAirports ? `(${stopAirports})` : ''}
-            </span>
-          </div>
-
-          <!-- End Time/Code -->
-          <div class="endpoint">
-            <span class="code">${last.destination}</span>
-            <span class="time">${formatTime(last.end_time)}</span>
-          </div>
-          
-        </div>
-
-        <div class="flight-col price-info">
-          <span class="price-val">$${flight.price.toFixed(0)}</span>
-          <button class="select-btn">Select</button>
+      <div class="flight-group" id="group-${index}">
+        ${renderFlightRowHtml(mainFlight, combo.date, false, expandBtnHtml)}
+        <div class="expanded-content">
+          ${otherFlights.map(f => renderFlightRowHtml(f, combo.date, true)).join("")}
         </div>
       </div>
     `;
