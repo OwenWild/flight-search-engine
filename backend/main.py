@@ -112,6 +112,8 @@ async def search_flights(query: FlightSearchQuery):
 
                 data = r.json()
                 flights = parse_amadeus_results(data.get("data", []), route)
+                if not flights:
+                    continue
                 flight_dicts = flights.model_dump()
                 flight_cache.set(route, flight_dicts)
 
@@ -141,7 +143,7 @@ def convert_string_to_datetime(s: str) -> datetime:
 def convert_string_to_date(s: str) -> date:
     return datetime.fromisoformat(s.replace("Z", "+00:00")).date()
              
-def parse_amadeus_results(amadeus_offers: List[Dict[str, Any]], route: FlightRoute) -> FlightSearchResultByCombination:
+def parse_amadeus_results(amadeus_offers: List[Dict[str, Any]], route: FlightRoute) -> FlightSearchResultByCombination | None:
     flights: List[FlightSearchResult] = []
 
     for offer in amadeus_offers:
@@ -168,6 +170,9 @@ def parse_amadeus_results(amadeus_offers: List[Dict[str, Any]], route: FlightRou
                 segments=segments,
             )
         )
+
+    if not flights:
+        return None
 
     flights.sort(key=lambda r: r.price)
 
