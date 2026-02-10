@@ -1,11 +1,13 @@
 from contextlib import asynccontextmanager
 
+from amadeus import ResponseError
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import httpx
 import os
 import asyncio
+import amadeus
 from datetime import date, datetime
 from typing import List, Dict, Any
 
@@ -29,32 +31,15 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Flight Search Engine", lifespan=lifespan)
 token = None 
 base = "https://test.api.amadeus.com"  # or https://api.amadeus.com for prod
-client_id = os.environ["AMADEUS_CLIENT_ID"]
-client_secret = os.environ["AMADEUS_CLIENT_SECRET"]
-token_lock = asyncio.Lock() # this stops multiple versions calling the new create function
 
+client = amadeus.Client(
+    client_id=os.environ["AMADEUS_CLIENT_ID"],
+    client_secret=os.environ["AMADEUS_CLIENT_SECRET"]
+)
+
+token_lock = asyncio.Lock() # this stops multiple versions calling the new create function
 flight_cache = FlightCache()
 
-async def get_token(client: httpx.AsyncClient) -> str:
-    r = await client.post(
-        f"{base}/v1/security/oauth2/token",
-        data={
-            "grant_type": "client_credentials",
-            "client_id": client_id,
-            "client_secret": client_secret,
-        },
-        headers={"Content-Type": "application/x-www-form-urlencoded"},
-        timeout=20,
-    )
-    return r.json()["access_token"]
-async def ensure_token(client: httpx.AsyncClient) -> str:
-    global token
-    if token is not None:
-        return token
-    async with token_lock: # stops extra token calls
-        if token is None: #check after lock leaves
-            token = await get_token(client)
-    return token
 
 # CORS Configuration
 app.add_middleware(
@@ -74,59 +59,72 @@ async def get_status():
         "version": "2.0.0"
     }
 
+
+async def fetch_single_route(origin, dest, dt_str, route):
+    """
+    This function handles one single amadeus API call.
+    It will run in a separate thread.
+    """
+    try:
+        response = await asyncio.to_thread(
+            client.shopping.flight_offers_search.get,
+            originLocationCode=origin,
+            destinationLocationCode=dest,
+            departureDate=dt_str,
+            adults=1,
+            currencyCode="USD",
+            max=50
+        )
+
+        flights = parse_amadeus_results(response.data, route)
+        if flights:
+            flight_dicts = flights.model_dump()
+            flight_cache.set(route, flight_dicts)
+            return flight_dicts
+
+    except ResponseError as error:
+        if error.response.status_code == 429:
+            print(f"Rate limit hit for {origin}->{dest}.")
+            # TODO Retry here
+        else: print(f"Amadeus Error for {origin}-{dest}: {error}")
+
+    return None
+
+
 @app.post("/search")
 async def search_flights(query: FlightSearchQuery):
     try:
-        async with httpx.AsyncClient() as client:
-            global token
-            token = await ensure_token(client)
+        tasks = []
+        results = []
+        all_routes = list(parse_query(query))
 
-            results = []
+        for origin, dest, dt in all_routes:
+            dt_str = dt.isoformat()
+            route = FlightRoute(origin, dest, convert_string_to_date(dt_str))
 
-            for origin, dest, dt in parse_query(query):
-                dt_str = dt.isoformat()
-                route = FlightRoute(origin, dest, convert_string_to_date(dt_str))
+            cached_data = flight_cache.get(route)
 
-                # Check cache
-                cached_data = flight_cache.get(route)
-                if cached_data:
-                    results.append(cached_data)
-                    continue
+            if cached_data:
+                results.append(cached_data)
+            else:
+                task = asyncio.create_task(fetch_single_route(origin, dest, dt_str, route))
+                tasks.append(task)
 
-                # If not in cache, call API
-                params = {
-                    "originLocationCode": origin,
-                    "destinationLocationCode": dest,
-                    "departureDate": dt_str,
-                    "adults": 1,
-                    "currencyCode": "USD",
-                    "max": 50,
-                }
+                # Wait for 100ms to not hit Amadeus rate limit
+                await asyncio.sleep(0.1)
 
-                r = await client.get(
-                    f"{base}/v2/shopping/flight-offers",
-                    params=params,
-                    headers={"Authorization": f"Bearer {token}"},
-                    timeout=30,
-                )
+        # Runs as soon as all api calls complete
+        if tasks:
+            api_results = await asyncio.gather(*tasks)
+            results.extend([r for r in api_results if r is not None])
 
-                data = r.json()
-                flights = parse_amadeus_results(data.get("data", []), route)
-                if not flights:
-                    continue
-                flight_dicts = flights.model_dump()
-                flight_cache.set(route, flight_dicts)
-
-                results.append(flight_dicts)
 
         results.sort(key=lambda r: r["flights"][0]["price"])
-
         return results[:6]
 
     except Exception as e:
-        print(f"Error: {e}")  # Log it
+        print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-
 
 
 def parse_query(q: FlightSearchQuery):
@@ -201,142 +199,3 @@ async def cache_cleaner():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     uvicorn.run(app, host="0.0.0.0", port=port)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ## DATA RETURNED FROM BACKEND
-#    [
-#   {
-#     "airline": "TK",
-#     "date": "2026-01-19",
-#     "price": 780.1,
-#     "segments": [
-#       {
-#         "origin": "BOS",
-#         "destination": "IST",
-#         "start_time": "2026-01-19T20:00:00",
-#         "end_time": "2026-01-20T13:25:00"
-#       },
-#       {
-#         "origin": "IST",
-#         "destination": "SYD",
-#         "start_time": "2026-01-20T15:30:00",
-#         "end_time": "2026-01-21T19:50:00"
-#       }
-#     ]
-#   },
-#   {
-#     "airline": "QR",
-#     "date": "2026-01-19",
-#     "price": 1106.8,
-#     "segments": [
-#       {
-#         "origin": "BOS",
-#         "destination": "DOH",
-#         "start_time": "2026-01-19T21:05:00",
-#         "end_time": "2026-01-20T17:00:00"
-#       },
-#       {
-#         "origin": "DOH",
-#         "destination": "SYD",
-#         "start_time": "2026-01-20T20:40:00",
-#         "end_time": "2026-01-21T18:50:00"
-#       }
-#     ]
-#   },
-#   {
-#     "airline": "EK",
-#     "date": "2026-01-19",
-#     "price": 1384.3,
-#     "segments": [
-#       {
-#         "origin": "BOS",
-#         "destination": "DXB",
-#         "start_time": "2026-01-19T22:10:00",
-#         "end_time": "2026-01-20T19:20:00"
-#       },
-#       {
-#         "origin": "DXB",
-#         "destination": "SYD",
-#         "start_time": "2026-01-20T21:45:00",
-#         "end_time": "2026-01-21T18:35:00"
-#       }
-#     ]
-#   },
-#   {
-#     "airline": "B6",
-#     "date": "2026-01-19",
-#     "price": 1495.8,
-#     "segments": [
-#       {
-#         "origin": "BOS",
-#         "destination": "DOH",
-#         "start_time": "2026-01-19T21:05:00",
-#         "end_time": "2026-01-20T17:00:00"
-#       },
-#       {
-#         "origin": "DOH",
-#         "destination": "SYD",
-#         "start_time": "2026-01-20T20:40:00",
-#         "end_time": "2026-01-21T18:50:00"
-#       }
-#     ]
-#   },
-#   {
-#     "airline": "EY",
-#     "date": "2026-01-19",
-#     "price": 1504.3,
-#     "segments": [
-#       {
-#         "origin": "BOS",
-#         "destination": "DCA",
-#         "start_time": "2026-01-19T20:00:00",
-#         "end_time": "2026-01-19T21:51:00"
-#       },
-#       {
-#         "origin": "IAD",
-#         "destination": "AUH",
-#         "start_time": "2026-01-20T21:10:00",
-#         "end_time": "2026-01-21T19:05:00"
-#       },
-#       {
-#         "origin": "AUH",
-#         "destination": "SYD",
-#         "start_time": "2026-01-21T21:05:00",
-#         "end_time": "2026-01-22T17:55:00"
-#       }
-#     ]
-#   },
-#   {
-#     "airline": "EY",
-#     "date": "2026-01-19",
-#     "price": 1504.3,
-#     "segments": [
-#       {
-#         "origin": "BOS",
-#         "destination": "DCA",
-#         "start_time": "2026-01-19T20:00:00",
-#         "end_time": "2026-01-19T21:51:00"
-#       },
-#       {
-#         "origin": "IAD",
-#         "destination": "AUH",
-#         "start_time": "2026-01-20T21:10:00",
-#         "end_time": "2026-01-21T19:05:00"
-#       },
-#       {
-#         "origin": "AUH",
-#         "destination": "SYD",
-#         "start_time": "2026-01-22T09:50:00",
-#         "end_time": "2026-01-23T06:35:00"
-#       }
-#     ]
-#   }
-# ]
-
