@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* System Variables and Colors*/
+:root {
+  --bg1: #eef9ff;
+  --bg2: #dff3ff;
+  --card: rgba(255, 255, 255, 0.78);
+  --b: rgba(90, 160, 210, 0.22);
+  --t: #0d2b3f;
+  --m: rgba(13, 43, 63, 0.65);
+  --a: #4aa8df;
+}
+
+/* Global Resets */
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* App Background gradient */
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: var(--t);
+  min-height: 100vh;
+  background: radial-gradient(
+      1200px 520px at 20% 10%,
+      rgba(115, 198, 255, 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      1000px 520px at 85% 20%,
+      rgba(74, 168, 223, 0.28),
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+}
+
+body:before,
+body:after {
+  content: "";
+  position: fixed;
+  left: -15vw;
+  right: -15vw;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(3px);
+  background: radial-gradient(
+      closest-side at 12% 62%,
+      rgba(255, 255, 255, 0.72),
+      transparent 70%
+    ),
+    radial-gradient(
+      closest-side at 24% 40%,
+      rgba(255, 255, 255, 0.78),
+      transparent 68%
+    ),
+    radial-gradient(
+      closest-side at 55% 42%,
+      rgba(255, 255, 255, 0.8),
+      transparent 68%
+    ),
+    radial-gradient(
+      closest-side at 86% 45%,
+      rgba(255, 255, 255, 0.76),
+      transparent 68%
+    );
+}
+
+body:before {
+  top: -10vh;
+  height: 46vh;
+  opacity: 0.85;
+}
+
+body:after {
+  top: 34vh;
+  height: 50vh;
+  opacity: 0.55;
+}
