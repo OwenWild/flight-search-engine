@@ -14,6 +14,7 @@ class FlightSearchResult(BaseModel):
     airline: str
     price: float
     segments: List[FlightSegment]
+    duration_min : int 
 
 
 class FlightSearchResultByCombination(BaseModel):
